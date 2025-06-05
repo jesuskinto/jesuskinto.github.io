@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesús Quinto - Ingeniero de Sistemas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Font (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (optional, if you want more icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background, similar to macOS */
+            color: #1f2937; /* Dark gray text */
+            scroll-behavior: smooth;
+        }
+        .apple-card {
+            background-color: #ffffff;
+            border-radius: 12px; /* Apple-like rounded corners */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.07); /* Softer shadow */
+            transition: all 0.3s ease-in-out;
+        }
+        .apple-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.09), 0 4px 6px -4px rgba(0, 0, 0, 0.09);
+            transform: translateY(-2px);
+        }
+        .apple-header {
+            color: #111827; /* Near black for main headers */
+        }
+        .apple-subheader {
+            color: #374151; /* Slightly lighter for subheaders */
+        }
+        .apple-link {
+            color: #2563eb; /* Apple blue for links */
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .apple-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        .skill-tag {
+            background-color: #e5e7eb; /* Light gray for tags */
+            color: #374151;
+            padding: 6px 12px;
+            border-radius: 16px; /* Pill shape */
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-block; /* Ensures proper spacing and hover effect */
+        }
+        .skill-tag:hover {
+            background-color: #d1d5db;
+            transform: scale(1.05);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 9px; /* Adjusted for icon alignment */
+            top: 5px; /* Start below the first icon's top */
+            bottom: 5px; /* End above the last icon's bottom */
+            width: 2px;
+            background-color: #d1d5db; /* Timeline vertical bar */
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 40px; /* Space for icon and line */
+            margin-bottom: 24px; /* Increased margin */
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 0px; /* Centered on the line */
+            top: 4px;
+            width: 20px;
+            height: 20px;
+            background-color: #2563eb; /* Apple blue */
+            border-radius: 50%;
+            border: 3px solid #f3f4f6; /* Match body background for "cutout" effect */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1; /* Ensure icon is above the line */
+        }
+        .timeline-icon-inner {
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+        }
+        .profile-image-container {
+            width: 128px; /* 32 in tailwind units (128px / 4) */
+            height: 128px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #e5e7eb; /* Placeholder background */
+            flex-shrink: 0; /* Prevent shrinking in flex container */
+        }
+        .profile-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image covers the area without distortion */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-image-container {
+                width: 96px; 
+                height: 96px;
+                margin-bottom: 1rem;
+            }
+             .header-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr; /* Single column for courses on small screens */
+            }
+        }
+        .header-content {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            text-align: center;
+            margin-bottom: 3rem; 
+        }
+
+        @media (min-width: 640px) { /* sm breakpoint and up */
+            .header-content {
+                flex-direction: row; 
+                text-align: left;
+                align-items: center; 
+            }
+            .profile-image-container {
+                margin: 0 2rem 0 0; 
+            }
+        }
+        .course-item {
+            display: flex;
+            align-items: flex-start; /* Align items to the start for multi-line text */
+            margin-bottom: 0.75rem; /* mb-3 */
+            padding: 0.5rem; /* p-2 */
+            border-radius: 6px; /* rounded-md */
+            transition: background-color 0.2s ease;
+        }
+        .course-item:hover {
+            background-color: #f9fafb; /* Slightly off-white on hover, like bg-gray-50 */
+        }
+        .course-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #6b7280; /* gray-500 */
+            border-radius: 50%;
+            margin-right: 0.75rem; /* mr-3 */
+            margin-top: 0.4rem; /* Adjust for text alignment */
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="container mx-auto max-w-5xl p-4 md:p-8">
+        <!-- Header Section -->
+        <header class="header-content">
+            <!-- Profile Image -->
+            <div class="profile-image-container">
+                <!-- Replace with your image URL or path -->
+                <img src="https://placehold.co/128x128/e0e0e0/333333?text=JQ" alt="Jesús Quinto"
+                     onerror="this.onerror=null; this.src='https://placehold.co/128x128/e0e0e0/333333?text=JQ';">
+            </div>
+            <div>
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold apple-header mb-1 sm:mb-2">Jesús Miguel Quinto Terán</h1>
+                <p class="text-lg sm:text-xl md:text-2xl apple-subheader font-light">Ingeniero de Sistemas & Full Stack Developer</p>
+            </div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 main-grid">
+            <!-- Left Column: Contact, Social, Skills -->
+            <div class="md:col-span-1 space-y-8">
+                <!-- Contact Information -->
+                <section id="contact" class="apple-card p-6">
+                    <h2 class="text-xl font-semibold apple-header mb-4 border-b pb-2">Contacto</h2>
+                    <div class="space-y-3 text-sm">
+                        <p class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.308 1.154a11.042 11.042 0 005.416 5.416l1.154-2.308a1 1 0 011.21-.502l4.493 1.498A1 1 0 0119 15.72V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <a href="tel:+584121672460" class="apple-link break-all">+58 412 1672460</a>
+                        </p>
+                        <p class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-gray-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <a href="mailto:jesuskinto@gmail.com" class="apple-link break-all">jesuskinto@gmail.com</a>
+                        </p>
+                        <p><strong class="font-medium">RIF:</strong> V256190814</p>
+                        <p class="flex items-start">
+                             <svg class="w-5 h-5 mr-3 text-gray-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Av. Alberto Carnevali. Res. La Hechicera, Etapa 1. Piso 2, Apto 1-A-12. Mérida, Venezuela.</span>
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Social Profiles -->
+                <section id="social" class="apple-card p-6">
+                    <h2 class="text-xl font-semibold apple-header mb-4 border-b pb-2">Perfiles Sociales</h2>
+                    <div class="space-y-2 text-sm">
+                        <p><a href="#" class="apple-link">Portafolio Personal</a></p>
+                        <p><a href="https://www.linkedin.com/in/jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link">LinkedIn</a></p>
+                        <p><a href="https://twitter.com/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">Twitter (X)</a></p>
+                        <p><a href="https://codepen.io/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">CodePen</a></p>
+                        <p><a href="https://github.com/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">GitHub</a></p>
+                        <p><a href="https://platzi.com/p/jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link">Platzi</a></p>
+                    </div>
+                </section>
+
+                <!-- Competencies -->
+                <section id="skills" class="apple-card p-6">
+                    <h2 class="text-xl font-semibold apple-header mb-4 border-b pb-2">Competencias Clave</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-tag">JavaScript (ES6+)</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">Angular</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Django (Python)</span>
+                        <span class="skill-tag">Ruby on Rails</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">Sass</span>
+                        <span class="skill-tag">Ionic</span>
+                        <span class="skill-tag">Git & GitHub</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">IoT</span>
+                        <span class="skill-tag">Metodologías Ágiles</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Profile, Experience, Education, Courses -->
+            <div class="md:col-span-2 space-y-8">
+                <!-- Profile Section -->
+                <section id="profile" class="apple-card p-6">
+                    <h2 class="text-2xl font-semibold apple-header mb-4 border-b pb-2">Perfil Profesional</h2>
+                    <div class="text-gray-700 leading-relaxed space-y-4">
+                        <p>
+                            Ingeniero de Sistemas con más de <strong>7 años de experiencia como Full Stack Developer</strong>, especializado en el ecosistema JavaScript (Node.js, Vue.js, React, Angular, TypeScript). He liderado y participado en el ciclo completo de desarrollo de software, desde la concepción y análisis hasta la implementación y despliegue de soluciones robustas y escalables para diversas industrias.
+                        </p>
+                        <p>
+                            Mi trayectoria incluye la creación de <strong>plataformas SaaS para la gestión de espacios (IoT)</strong>, sistemas financieros para el control crediticio, aplicaciones móviles (React Native) para servicios de transporte con backends en Laravel, y plataformas de gestión de datos clínicos en el sector salud. También cuento con experiencia en el desarrollo de e-commerce C2C con Angular.
+                        </p>
+                        <p>
+                            Graduado de la <strong>Universidad de Los Andes</strong> y actualmente cursando un <strong>Máster en Inteligencia Artificial en UNIR</strong>, busco aplicar mis conocimientos en IA y mi sólida experiencia en desarrollo para construir software innovador y de alto rendimiento. Me apasiona el código limpio, las buenas prácticas, y trabajar en equipos dinámicos enfocados en la calidad y eficiencia.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Experience Section -->
+                <section id="experience" class="apple-card p-6">
+                    <h2 class="text-2xl font-semibold apple-header mb-6 border-b pb-2">Experiencia Laboral</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Ingeniero de Software (Full Stack)</h3>
+                            <p class="text-sm text-gray-600 mb-1">Parso, San José / Costa Rica</p>
+                            <p class="text-gray-700 text-sm">Desarrollo y mantenimiento de SaaS para administración de estacionamientos y espacios de trabajo, integrando soluciones de Internet of Things (IoT). Tecnologías: Node.js, React, MongoDB.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Full Stack Developer</h3>
+                            <p class="text-sm text-gray-600 mb-1">Crediuno, Buenos Aires / Argentina</p>
+                            <p class="text-gray-700 text-sm">Construcción de plataforma crediticia para levantamiento, control, pagos e intereses. Tecnologías: Django, PostgreSQL, Vue.js.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Full Stack Developer</h3>
+                            <p class="text-sm text-gray-600 mb-1">EVA (Servicios de Taxi), Mérida / Venezuela</p>
+                            <p class="text-gray-700 text-sm">Desarrollo de aplicaciones móviles para solicitud y pago de taxis (React Native) y backend (Laravel). API-driven.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Full Stack Developer</h3>
+                            <p class="text-sm text-gray-600 mb-1">HealthTech Solutions (Nombre ejemplo), Santiago de Chile / Chile</p>
+                            <p class="text-gray-700 text-sm">Plataforma para registro y gestión de pacientes de cirugías cardiovasculares, búsqueda avanzada y control de protocolos. Tecnologías: Ruby on Rails, React.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Frontend Developer</h3>
+                            <p class="text-sm text-gray-600 mb-1">Four Geeks, Mérida / Venezuela</p>
+                            <p class="text-gray-700 text-sm">Desarrollo frontend para e-commerce C2C. Tecnología principal: Angular.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section id="education" class="apple-card p-6">
+                    <h2 class="text-2xl font-semibold apple-header mb-6 border-b pb-2">Educación</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Máster Universitario en Inteligencia Artificial</h3>
+                            <p class="text-sm text-gray-600 mb-1">UNIR | Universidad Internacional de La Rioja (Online)</p>
+                            <p class="text-gray-500 text-xs">Noviembre 2024 – Actualmente</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Ingeniero de Sistemas</h3>
+                            <p class="text-sm text-gray-600 mb-1">Universidad de Los Andes, Mérida, Venezuela</p>
+                            <p class="text-gray-500 text-xs">Julio 2013 – Agosto 2022</p>
+                            <p class="text-gray-700 text-sm">Mención Sistemas Computacionales. Tesis destacada en optimización de algoritmos.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon"><div class="timeline-icon-inner"></div></div>
+                            <h3 class="text-lg font-semibold apple-subheader">Bachiller en Ciencias</h3>
+                            <p class="text-sm text-gray-600 mb-1">U.E. Colegio Pedro José Carrillo Márquez, Trujillo, Venezuela</p>
+                            <p class="text-gray-500 text-xs">Enero 2006 – Enero 2012</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Courses Section -->
+                <section id="courses" class="apple-card p-6">
+                    <h2 class="text-2xl font-semibold apple-header mb-6 border-b pb-2">Cursos y Certificaciones</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 courses-grid text-sm text-gray-700">
+                        <!-- Column 1 -->
+                        <div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Programación básica</strong> <span class="text-gray-500 block sm:inline">(Platzi, Ene 2019 - Feb 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Desarrollo web online</strong> <span class="text-gray-500 block sm:inline">(Platzi, Feb 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Carrera de Vuejs</strong> <span class="text-gray-500 block sm:inline">(Platzi, Mar 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Frontend a profundidad con Vue.js</strong> <span class="text-gray-500 block sm:inline">(Platzi, Mar 2019 - Abr 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso Avanzado de Vue.js 2 y Firebase</strong> <span class="text-gray-500 block sm:inline">(Bedu, Abr 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Python</strong> <span class="text-gray-500 block sm:inline">(Platzi, Abr 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Profesional Git y Github</strong> <span class="text-gray-500 block sm:inline">(Platzi, May 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Fundamentos de Javascript</strong> <span class="text-gray-500 block sm:inline">(Platzi, Jun 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Frontend Developer</strong> <span class="text-gray-500 block sm:inline">(Platzi, Jul 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Profesional Javascript</strong> <span class="text-gray-500 block sm:inline">(Platzi, Ago 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">EMA6</strong> <span class="text-gray-500 block sm:inline">(Platzi, Sep 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Node.js</strong> <span class="text-gray-500 block sm:inline">(Platzi, Oct 2019 - Oct 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">React</strong> <span class="text-gray-500 block sm:inline">(Platzi, Nov 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">React Router and Redux</strong> <span class="text-gray-500 block sm:inline">(Platzi, Dic 2019)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de Estrategias para Aprender en Línea Efectivamente 2019</strong> <span class="text-gray-500 block sm:inline">(Platzi, Dic 2019)</span></div></div>
+                             <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Problem Solving: The Complete Guide</strong> <span class="text-gray-500 block sm:inline">(Udemy, Jul 2022 - Ago 2022)</span></div></div>
+                        </div>
+                        <!-- Column 2 -->
+                        <div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de JavaScript Engine (V8) y el Navegador</strong> <span class="text-gray-500 block sm:inline">(Platzi, Ene 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de Programación Funcional en JavaScript por Bedu</strong> <span class="text-gray-500 block sm:inline">(Platzi, Feb 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso Práctico de Python: Creación de un CRUD, Desarrollo Backend con Python y Django</strong> <span class="text-gray-500 block sm:inline">(Platzi, Feb 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso Profesional de JavaScript</strong> <span class="text-gray-500 block sm:inline">(Platzi, Mar 2020 - May 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Taller de Creación de Router para Single Page App con JavaScript, Arquitectura Frontend</strong> <span class="text-gray-500 block sm:inline">(Platzi, May 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Carrera de Full Stack Developer con JavaScript</strong> <span class="text-gray-500 block sm:inline">(Platzi, Jun 2020 - Dic 2020)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Learn SVG Animation - With HTML, CSS & Javascript</strong> <span class="text-gray-500 block sm:inline">(Udemy, Dic 2021)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Selenium Webdriver with PYTHON from Scratch + Frameworks</strong> <span class="text-gray-500 block sm:inline">(Udemy, Feb 2022 - Mar 2022)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Software Testing Masterclass (2023) - From Novice to Expert</strong> <span class="text-gray-500 block sm:inline">(Udemy, Mar 2022)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">The Complete Guide to Advanced React Component Patterns</strong> <span class="text-gray-500 block sm:inline">(Udemy, Abr 2022 - May 2022)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Happiness Psychology: 5 Proven Tips</strong> <span class="text-gray-500 block sm:inline">(Udemy, Jun 2022)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de Economía del Comportamiento</strong> <span class="text-gray-500 block sm:inline">(Platzi, Ene 2024)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de Animaciones con CSS</strong> <span class="text-gray-500 block sm:inline">(Platzi, Ene 2024)</span></div></div>
+                            <div class="course-item"><div class="course-dot"></div><div><strong class="font-medium">Curso de Storybook: Sistemas de Diseño con JavaScript</strong> <span class="text-gray-500 block sm:inline">(Platzi, Feb 2024)</span></div></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-sm text-gray-500">&copy; <script>document.write(new Date().getFullYear())</script> Jesús Quinto. Todos los derechos reservados.</p>
+            <p class="text-xs text-gray-400 mt-1">Diseñado con inspiración Apple & Tailwind CSS.</p>
+        </footer>
+    </div>
+</body>
+</html>

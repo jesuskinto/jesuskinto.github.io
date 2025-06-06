@@ -183,16 +183,19 @@
 <body class="antialiased">
     <div class="container mx-auto max-w-5xl p-4 md:p-8">
         <!-- Header Section -->
-        <header class="header-content">
-            <!-- Profile Image -->
-            <div class="profile-image-container">
-                <!-- Replace with your image URL or path -->
-                <img src="https://placehold.co/128x128/e0e0e0/333333?text=JQ" alt="Jesús Quinto"
-                     onerror="this.onerror=null; this.src='https://placehold.co/128x128/e0e0e0/333333?text=JQ';">
+        <header class="text-center mb-12 flex flex-col items-center">
+            <div class="profile-image-container mx-auto mb-4">
+                <img src="./avatar.png" alt="Jesús Quinto"
+                    onerror="this.onerror=null; this.src='https://placehold.co/128x128/e0e0e0/333333?text=JQ';">
             </div>
-            <div>
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold apple-header mb-1 sm:mb-2">Jesús Miguel Quinto Terán</h1>
-                <p class="text-lg sm:text-xl md:text-2xl apple-subheader font-light">Ingeniero de Sistemas & Full Stack Developer</p>
+            <h1 class="text-4xl md:text-5xl font-bold apple-header mb-2">Jesús Miguel Quinto Terán</h1>
+            <p class="text-xl md:text-2xl apple-subheader font-light mb-4">Ingeniero de Sistemas & Full Stack Developer</p>
+            <div class="mt-2">
+                <a href="./CV.pdf" download="CV-Jesus-Quinto.pdf"
+                    onclick="gtag('event', 'download_cv', { 'event_category': 'Engagement', 'event_label': 'CV Download Button Click', 'value': 5 });"
+                    class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105">
+                    Descargar CV
+                </a>
             </div>
         </header>
 
@@ -224,11 +227,11 @@
                     <h2 class="text-xl font-semibold apple-header mb-4 border-b pb-2">Perfiles Sociales</h2>
                     <div class="space-y-2 text-sm">
                         <p><a href="#" class="apple-link">Portafolio Personal</a></p>
-                        <p><a href="https://www.linkedin.com/in/jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link">LinkedIn</a></p>
-                        <p><a href="https://twitter.com/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">Twitter (X)</a></p>
-                        <p><a href="https://codepen.io/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">CodePen</a></p>
-                        <p><a href="https://github.com/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link">GitHub</a></p>
-                        <p><a href="https://platzi.com/p/jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link">Platzi</a></p>
+                        <p><a href="https://www.linkedin.com/in/jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'LinkedIn Click' });">LinkedIn</a></p>
+                        <p><a href="https://twitter.com/jesuskintoT" target="_blank" rel="noopener noreferrer" class="apple-link" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Twitter Click' });">Twitter (X)</a></p>
+                        <p><a href="https://codepen.io/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'CodePen Click' });">CodePen</a></p>
+                        <p><a href="https://github.com/jesuskinto" target="_blank" rel="noopener noreferrer" class="apple-link" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'GitHub Click' });">GitHub</a></p>
+                        <p><a href="https://platzi.com/p/Jesuskinto/" target="_blank" rel="noopener noreferrer" class="apple-link" onclick="gtag('event', 'generate_lead', { 'event_category': 'Contact', 'event_label': 'Platzi Click' });">Platzi</a></p>
                     </div>
                 </section>
 
@@ -275,6 +278,43 @@
                         <p>
                             Graduado de la <strong>Universidad de Los Andes</strong> y actualmente cursando un <strong>Máster en Inteligencia Artificial en UNIR</strong>, busco aplicar mis conocimientos en IA y mi sólida experiencia en desarrollo para construir software innovador y de alto rendimiento. Me apasiona el código limpio, las buenas prácticas, y trabajar en equipos dinámicos enfocados en la calidad y eficiencia.
                         </p>
+                    </div>
+                </section>
+
+                <section id="services" class="apple-card p-6">
+                    <h2 class="text-2xl font-semibold apple-header mb-4 border-b pb-2">Servicios Profesionales</h2>
+                    <p class="text-sm text-gray-600 mb-6">Esta sección simula productos/servicios para la recolección de datos de "Transacciones" en Google Analytics.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Desarrollo Frontend con React/Vue</h3>
+                                <p class="text-xs text-gray-500">Creación de interfaces interactivas y modernas.</p>
+                            </div>
+                            <button onclick="gtag('event', 'purchase', { transaction_id: 'T' + Date.now(), value: 1500, currency: 'USD', items: [{ item_name: 'Desarrollo Frontend', price: 1500, quantity: 1 }] });"
+                                    class="bg-green-500 text-white text-xs font-bold py-2 px-3 rounded-md hover:bg-green-600">
+                                Contactar
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Desarrollo Backend con Node.js</h3>
+                                <p class="text-xs text-gray-500">APIs robustas y escalables para tus proyectos.</p>
+                            </div>
+                            <button onclick="gtag('event', 'purchase', { transaction_id: 'T' + Date.now(), value: 2000, currency: 'USD', items: [{ item_name: 'Desarrollo Backend', price: 2000, quantity: 1 }] });"
+                                    class="bg-green-500 text-white text-xs font-bold py-2 px-3 rounded-md hover:bg-green-600">
+                                Contactar
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Consultoría Full Stack</h3>
+                                <p class="text-xs text-gray-500">Asesoría integral para tu arquitectura de software.</p>
+                            </div>
+                            <button onclick="gtag('event', 'purchase', { transaction_id: 'T' + Date.now(), value: 500, currency: 'USD', items: [{ item_name: 'Consultoria Full Stack', price: 500, quantity: 1 }] });"
+                                    class="bg-green-500 text-white text-xs font-bold py-2 px-3 rounded-md hover:bg-green-600">
+                                Contactar
+                            </button>
+                        </div>
                     </div>
                 </section>
 
